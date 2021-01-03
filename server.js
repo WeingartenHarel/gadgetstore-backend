@@ -52,7 +52,7 @@ const productRoutes = require('./api/product/product.routes')
 const connectSockets = require('./api/socket/socket.routes')
      
   
-// routes
+// routes just a note
 app.use('/api/auth', authRoutes)
 app.use('/api/user', userRoutes)
 app.use('/api/product', mixRoutes)
