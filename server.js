@@ -13,7 +13,7 @@ const io = require('socket.io')(http);
 app.use(cookieParser())
 app.use(bodyParser.json());
 app.use(session({
-    secret: 'mixtape secret',
+    secret: 'gadget secret',
     resave: false,
     saveUninitialized: true,
     cookie: { secure: false }
@@ -29,23 +29,6 @@ if (process.env.NODE_ENV === 'production') {
     app.use(cors(corsOptions));
 }    
   
-// socket section 
-// var msgs = []
-// io.on('connection', (socket) => {
-//     socket.emit('msgHistory', msgs)
-
-//     io.emit('user connect')
-
-//     socket.on('msgSent', (msg) => {
-//         console.log('Got msg', msg);
-//         msgs.push(msg)
-//         io.emit('msgBeam', msg);
-//     });
-//     socket.on('disconnect', () => {
-//         io.emit('user disconnected', { txt: 'Someone just left', from: 'System' })
-//     });
-// });
- 
 const authRoutes = require('./api/auth/auth.routes')
 const userRoutes = require('./api/user/user.routes')
 const productRoutes = require('./api/product/product.routes')
@@ -55,14 +38,13 @@ const connectSockets = require('./api/socket/socket.routes')
 // routes just a note
 app.use('/api/auth', authRoutes)
 app.use('/api/user', userRoutes)
-app.use('/api/product', mixRoutes)
+app.use('/api/product', productRoutes)
 connectSockets(io)
  
 app.get('/**', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 })
 
-const logger = require('./services/logger.service')
 const port = process.env.PORT || 3030;
 http.listen(port, () => {
     logger.info('Server is running on port: ' + port)
