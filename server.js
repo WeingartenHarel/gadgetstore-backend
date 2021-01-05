@@ -28,7 +28,7 @@ if (process.env.NODE_ENV === 'production') {
     };
     app.use(cors(corsOptions));
 }    
- 
+//mark
 const productRoutes = require('./api/product/product.routes')
 const connectSockets = require('./api/socket/socket.routes')
      
