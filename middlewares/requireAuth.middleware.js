@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+const logger = require('../services/logger.service')
+>>>>>>> 88db770ff7bbfd1bcb89910bd58458408e901c25
 
 async function requireAuth(req, res, next) {
   if (!req.session || !req.session.user) {

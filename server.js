@@ -36,14 +36,16 @@ const productRoutes = require('./api/product/product.routes')
 
 
 // routes just a note
-app.use('/api/auth', authRoutes)
-app.use('/api/user', userRoutes)
-app.use('/api/product', productRoutes)
+// app.use('/api/auth', authRoutes)
+// app.use('/api/user', userRoutes)
+// app.use('/api/product', productRoutes)
 connectSockets(io)
 
 app.get('/**', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 })
+
+const logger = require('./services/logger.service')
 
 const port = process.env.PORT || 3030;
 http.listen(port, () => {
