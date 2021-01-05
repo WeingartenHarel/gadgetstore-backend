@@ -1,11 +1,11 @@
 const dbService = require('../../services/db.service')
 const ObjectId = require('mongodb').ObjectId
- 
+  
  
 async function query(filterBy = {}) {
     // TODO: Build the criteria with $regex
      const criteria = _buildCriteria(filterBy)
-    const collection = await dbService.getCollection('product')
+    const collection = await dbService.getCollection('products')
 
     try {
          const products = await collection.find().toArray();

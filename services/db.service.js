@@ -7,7 +7,7 @@ module.exports = {
 }
  
 // Database Name
-const dbName = 'googlemaps';
+const dbName = 'gadgetstoreDB';
 
 var dbConn = null;
 

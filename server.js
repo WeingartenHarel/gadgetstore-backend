@@ -33,7 +33,7 @@ const productRoutes = require('./api/product/product.routes')
 const connectSockets = require('./api/socket/socket.routes')
      
 
-// app.use('/api/product', productRoutes)
+app.use('/api/product', productRoutes)
 connectSockets(io)
  
 app.get('/**', (req, res) => {
