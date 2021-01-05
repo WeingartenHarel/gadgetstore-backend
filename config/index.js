@@ -1,9 +1,9 @@
 var config
 
 if(process.env.NODE_ENV === 'production'){
-    config = reqire('./prod')
+    config = require('./prod')
 } else {
-    config = reqire('./dev')
+    config = require('./dev')
 }
 
 module.exports = config
