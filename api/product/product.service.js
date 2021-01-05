@@ -24,7 +24,7 @@ async function query(filterBy = {}) {
 
 
 async function getById(productId) {
-    const collection = await dbService.getCollection('product')
+    const collection = await dbService.getCollection('products')
     try {
         const product = await collection.findOne({ '_id': ObjectId(productId) })
         //delete product.password
@@ -44,7 +44,7 @@ async function getById(productId) {
 }
  
 async function remove(productId) {
-    const collection = await dbService.getCollection('product')
+    const collection = await dbService.getCollection('products')
     try {
         //bjectId(productId)
         await collection.deleteOne({ "_id": ObjectId(productId) })
@@ -56,7 +56,7 @@ async function remove(productId) {
 
 
 async function add(product) {
-    const collection = await dbService.getCollection('product')
+    const collection = await dbService.getCollection('products')
     try {
         await collection.insertOne(product);
         return product;
@@ -68,7 +68,7 @@ async function add(product) {
 
 async function update(product) {
     //console.log('MIX BACK SERVICE : ',product);
-    const collection = await dbService.getCollection('product')
+    const collection = await dbService.getCollection('products')
     product._id = ObjectId(product._id);
     try {
         await collection.updateOne({ _id: product._id }, { $set: product })
